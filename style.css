@@ -1,0 +1,183 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* ثلاث أعمدة متساوية العرض */
+    gap: 10px;
+    /* فراغ بين العناصر */
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.table-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.table-header {
+    background-color: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.table-item {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.table-item:hover {
+    background-color: #e0f7fa;
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+.table-item:nth-child(even) {
+    background-color: #e0f7fa;
+}
+
+.table-item:nth-child(odd) {
+    background-color: #e0f2f1;
+}
+/* تنسيق الحاوية الرئيسية للنموذج */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
+}
+
+/* تنسيق الحقول النصية */
+input[type="text"] {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* إضافة تأثير عند التركيز على الحقول النصية */
+input[type="text"]:focus {
+    border-color: #007bff; /* لون إطار عند التركيز */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* ظل عند التركيز */
+}
+
+/* تنسيق الأزرار */
+button {
+    background-color: #4CAF50; /* لون الخلفية */
+    color: white; /* لون النص */
+    padding: 12px 24px;
+    margin: 1%;
+    border: none;
+    border-radius: 4px; /* حواف دائرية */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* لون الخلفية عند التمرير */
+}
+
+/* تحسين تنسيق العنوان */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* خلفية شفافة قليلاً */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* إضافة ظل لجعلها بارزة */
+    border-radius: 8px;
+    /* حواف دائرية */
+}
+
+.close {
+    color: #666;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* تحسين تنسيق الأزرار */
+button {
+    background-color: #4CAF50;
+    /* لون الخلفية */
+    color: white;
+    /* لون النص */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    /* حواف دائرية */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+    /* لون الخلفية عند التمرير */
+}

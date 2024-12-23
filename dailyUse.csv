@@ -4,7 +4,7 @@
 "Good night.","تصبح على خير."
 "Thank you.","شكراً لك."
 "You're welcome.","على الرحب والسعة."
-"Excuse me.","عذراً."
+"Excuse me.",عذراً.
 "I'm sorry.","أنا آسف."
 "Yes, please.","نعم، من فضلك."
 "No, thank you.","لا، شكراً."
@@ -28,4 +28,7 @@
 "Call the police.","اتصل بالشرطة."
 "I'm lost.","أنا ضائع."
 "Where do you live?","أين تسكن؟"
-"I live in [City].","أسكن في [مدينتك]."
+"I live in [City].","أسكن في [اسم المدينة بقا]."
+"Can you help ?","هل يمكنك مساعدتي؟"
+"hi ","أهلا "
+"Can you help ?","هل يمكنك مساعدتي؟"

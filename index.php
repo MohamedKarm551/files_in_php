@@ -39,79 +39,73 @@ fclose($fileHandlerDailyUse);
 <html>
 
 <head>
+    <link rel="stylesheet" href="style.css">
     <title>Daily Use Sentences</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
 
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        .table-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .table-header {
-            background-color: #4CAF50;
-            color: #fff;
-            font-weight: bold;
-            padding: 15px;
-            text-align: center;
-            border-radius: 10px 10px 0 0;
-        }
-
-        .table-item {
-            padding: 15px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .table-item:hover{
-            background-color: #e0f7fa; transform: scale(1.05);
-            font-weight: bold;
-        }
-        .table-item:nth-child(even) {
-            background-color: #e0f7fa;
-        }
-
-        .table-item:nth-child(odd) {
-            background-color: #e0f2f1;
-        }
-    </style>
 </head>
 
 <body>
-    <h2>30 Daily Use Sentences in English and Arabic</h2>
-    <div class="table-container">
-        <?php foreach ($dataOfDailyUse as $index=>$row) : ?>
-           <?php if($index == 0):  ?>
-                <div class="table-header"><?php echo $row[0] ?></div>
-                <div class="table-header"><?php echo $row[1] ?></div>
-            <?php else: ?>
-            <div class="table-item">
-                <?php echo htmlspecialchars($row[0]); ?>
-            </div>
-            <div class="table-item">
-                <?php echo htmlspecialchars($row[1]); ?>
-            </div> 
-        <?php endif; ?>
-        <?php endforeach; ?>
+    <div class="container">
+
+        <h2>30 Daily Use Sentences in English and Arabic</h2>
+        <div class="table-container">
+            <?php foreach ($dataOfDailyUse as $index => $row) : ?>
+                <?php if ($index == 0):  ?>
+                    <div class="table-header"><?php echo $row[0] ?></div>
+                    <div class="table-header"><?php echo $row[1] ?></div>
+                <?php else: ?>
+    
+                    <div class="table-item" data-index="<?php echo $index; ?>"> <?php echo htmlspecialchars($row[0]); ?> </div>
+    
+                    <div class="table-item" data-index="<?php echo $index; ?>"> <?php echo htmlspecialchars($row[1]); ?> </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+    
+        </div>
+           <!-- فورم لإدخال الجملة الجديدة -->
+    <form method="post" action="addSentence.php">
+        <input type="text" name="english_sentence" placeholder="Enter English sentence" required>
+        <input type="text" name="arabic_sentence" placeholder="Enter Arabic sentence" required>
+        <button type="submit" name="add_sentence">Add Sentence</button>
+    </form>
     </div>
+                
+    <!-- النموذج (popup) مخفي لحين الضغط على أحد الكلمات -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <form method="post" action="updateAndDelete.php">
+                <input type="hidden" id="index" name="index">
+                <input type="text" id="english_sentence" name="english_sentence" required>
+                <input type="text" id="arabic_sentence" name="arabic_sentence" required>
+                <button type="submit" name="update_sentence">Update</button>
+                <button type="submit" name="delete_sentence">Delete</button>
+            </form>
+        </div>
+    </div>
+
 </body>
+<script>
+    // دالة لفتح النموذج (popup) 
+    function openModal(index) {
+        document.getElementById("index").value = index;
+        const data = <?php echo json_encode($dataOfDailyUse); ?>;
+        document.getElementById("english_sentence").value = data[index][0];
+        document.getElementById("arabic_sentence").value = data[index][1];
+        document.getElementById("myModal").style.display = "block";
+    } // دالة لإغلاق النموذج (popup)
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+    // إضافة حدث click لكل العناصر في الجدول 
+    document.querySelectorAll(".table-item").forEach(function(element) {
+        element.addEventListener("click", function() {
+            openModal(this.getAttribute("data-index"));
+        });
+    }); // إضافة حدث click لإغلاق النموذج 
+    document.getElementById("closeModal").addEventListener("click", function() {
+        closeModal();
+    });
+</script>
 
 </html>
